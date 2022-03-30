@@ -29,12 +29,12 @@ public class Main {
 		}
 		//Manipulate Image
 		System.out.println(img.toString());
-		ImageManipulator.toGrayscale(img);
+		//ImageManipulator.toGrayscale(img);
 		img = ImageManipulator.floydSteinberg(img);
 		
 		//Save Image
 		try {
-			File outputFile = new File("saved.jpg");
+			File outputFile = new File("lolSmall.jpg");
 			ImageIO.write(img, "jpg", outputFile);
 		}catch(IOException e) {
 			System.out.println(e.getMessage());
