@@ -1,4 +1,4 @@
-package FloydSteinbergDithering;
+package FloydSteinbergDithering.Java.FloydSteinbergDithering;
 
 import java.awt.Color;
 

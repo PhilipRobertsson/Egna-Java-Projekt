@@ -1,4 +1,4 @@
-package FloydSteinbergDithering;
+package FloydSteinbergDithering.Java.FloydSteinbergDithering;
 
 import java.awt.image.BufferedImage;
 
@@ -29,7 +29,7 @@ public class ImageManipulator {
 		}
 	}
 	
-	public static BufferedImage dither(BufferedImage img) {
+	public static BufferedImage floydSteinberg(BufferedImage img) {
 		
 		C3[] palette = new C3[] {
 				new C3(    0,     0,     0), // Black
@@ -65,6 +65,7 @@ public class ImageManipulator {
 
 	      return img;
 	}
+
 	private static C3 findClosestPaletteColor(C3 c, C3[] palette) {
 	    C3 closest = palette[0];
 
@@ -73,78 +74,5 @@ public class ImageManipulator {
 	        closest = n;
 
 	    return closest;
-	  }
-		
-		/*
-		
-		for(int x = 1; x < img.getWidth() - 1; x++) 
-		for(int y = 1; y < img.getHeight() - 1; y++) 
-		{
-			int oldRGB = img.getRGB(x, y);
-			int oldR = (oldRGB >> 16) & 0xFF;
-			int oldG = (oldRGB >> 8) & 0xFF;
-			int oldB = (oldRGB & 0xFF);
-			
-			
-			// Factor is the amount of colors + 1 which will be used in the result. factor = 1 will use either black or white.  rgb(0,0,0) = black while rgb(255,255,255) = white.
-			int newR = (int) Math.round((factor * oldR)/255.0) * (255/factor);
-			int newG = (int) Math.round((factor * oldG)/255.0) * (255/factor);
-			int newB = (int) Math.round((factor * oldB)/255.0) * (255/factor);
-			
-			// Compile the new R, G and B values to one int
-			Color compiledRGB = new Color(newR,newG,newB);
-			int newRGB = compiledRGB.getRGB();
-			
-			// Compute the error between the new and old RGB values
-			
-			int qErrorR = Math.abs(oldR - newR);
-			int qErrorG = Math.abs(oldG - newG);
-			int qErrorB =	Math.abs(oldB - newB);
-			
-			int index = img.getRGB(x + 1, y);
-			int r = (index >> 16) & 0xFF;
-			int g = (index >> 8) & 0xFF;
-			int b = (index & 0xFF);
-			r =  r + (int) Math.round(qErrorR * 7/16.0);
-			g = g + (int) Math.round(qErrorG * 7/16.0);
-			b = b + (int) Math.round(qErrorB * 7/16.0);
-			compiledRGB = new Color(r,g,b);
-			newRGB = compiledRGB.getRGB();
-			img.setRGB(x + 1, y, newRGB);
-			
-			index = img.getRGB(x - 1, y + 1);
-			r = (index >> 16) & 0xFF;
-			g = (index >> 8) & 0xFF;
-			b = (index & 0xFF);
-			r =  r + (int) Math.round(qErrorR * 3/16.0);
-			g = g + (int) Math.round(qErrorG * 3/16.0);
-			b = b + (int) Math.round(qErrorB * 3/16.0);
-			compiledRGB = new Color(r,g,b);
-			newRGB = compiledRGB.getRGB();
-			img.setRGB(x - 1, y + 1, newRGB);
-			
-			index = img.getRGB(x, y + 1);
-			r = (index >> 16) & 0xFF;
-			g = (index >> 8) & 0xFF;
-			b = (index & 0xFF);
-			r =  r + (int) Math.round(qErrorR * 5/16.0);
-			g = g + (int) Math.round(qErrorG * 5/16.0);
-			b = b + (int) Math.round(qErrorB * 5/16.0);
-			compiledRGB = new Color(r,g,b);
-			newRGB = compiledRGB.getRGB();
-			img.setRGB(x, y + 1, newRGB);
-			
-			index = img.getRGB(x +1, y + 1);
-			r = (index >> 16) & 0xFF;
-			g = (index >> 8) & 0xFF;
-			b = (index & 0xFF);
-			r =  r + (int) Math.round(qErrorR * 1/16.0);
-			g = g + (int) Math.round(qErrorG * 1/16.0);
-			b = b + (int) Math.round(qErrorB * 1/16.0);
-			compiledRGB = new Color(r,g,b);
-			newRGB = compiledRGB.getRGB();
-			img.setRGB(x + 1, y + 1, newRGB);
-			
-		}
-		*/
+	}
 }

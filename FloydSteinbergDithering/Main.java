@@ -1,4 +1,4 @@
-package FloydSteinbergDithering;
+package FloydSteinbergDithering.Java.FloydSteinbergDithering;
 
 import java.io.*;
 
@@ -30,7 +30,7 @@ public class Main {
 		//Manipulate Image
 		System.out.println(img.toString());
 		ImageManipulator.toGrayscale(img);
-		img = ImageManipulator.dither(img);
+		img = ImageManipulator.floydSteinberg(img);
 		
 		//Save Image
 		try {
